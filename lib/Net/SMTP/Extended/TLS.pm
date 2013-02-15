@@ -3,6 +3,7 @@ package Net::SMTP::Extended::TLS;
 use strict;
 use Carp;
 
+use Net::SMTP::Extended;
 use IO::Socket::SSL 1.831;
 use Net::Cmd;
 
@@ -38,7 +39,7 @@ sub starttls {
 		$config = { SSL_verify_mode => IO::Socket::SSL::SSL_VERIFY_NONE, };
 
 	}
-	if (defined $smtp->support('STARTTLS', 500, [ "Command unknown: 'STARTTLS'" ] )) {
+	if (defined $smtp->supports('STARTTLS', 500, [ "Command unknown: 'STARTTLS'" ] )) {
 		if ($smtp->command('STARTTLS')->response == Net::Cmd::CMD_OK) {
 			# handshake
 			my $rv = $class->start_SSL(

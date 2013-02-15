@@ -10,6 +10,8 @@ use base 'Net::SMTP';
 # With TLS
 sub is_secure { 0 }
 
+1;
+
 package Net::SMTP::Extended;
 
 use strict;
@@ -45,7 +47,5 @@ sub new {
 	}
 }
 
-1
-
-
+1;
 
